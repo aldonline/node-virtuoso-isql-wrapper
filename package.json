@@ -1,0 +1,15 @@
+{
+  "name": "virtuoso-isql-wrapper",
+  "description": "Thin wrapper for the OpenLink (Virtuoso) iSQL command utility",
+  "version": "0.0.1",
+  "author": "Aldo Bucchi <aldo.bucchi@gmail.com>",
+  "keywords": ["virtuoso", "openlink", "isql", "sparql", "rdf", "linkeddata"],
+  "dependencies": {
+    "coffee-script": ">= 1.1.2"
+  },
+  "main": "index",
+  "scripts": {
+    "test": "coffee ./test/test.coffee"
+  },
+  "engines": { "node": ">= 0.6.1" }
+}
