@@ -1,7 +1,7 @@
 {
   "name": "virtuoso-isql-wrapper",
   "description": "Thin wrapper for the OpenLink (Virtuoso) iSQL command utility",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Aldo Bucchi <aldo.bucchi@gmail.com>",
   "keywords": ["virtuoso", "openlink", "isql", "sparql", "rdf", "linkeddata"],
   "dependencies": {

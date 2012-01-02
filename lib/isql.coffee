@@ -9,6 +9,7 @@ exec = ( options, cb ) ->
     usr: 'dba'
     pwd: 'dba'
     sql: 'status()'
+    sql_file: null
     command: 'isql'
     cwd: undefined
     # turning on verbose will log out
@@ -22,7 +23,10 @@ exec = ( options, cb ) ->
   if o.verbose
     console.log 'Calling iSQL with options'
     console.log JSON.stringify o
-  p = spawn o.command, [ String(o.port), o.usr, o.pwd, verbose_arg, "EXEC=#{o.sql}" ], cwd:o.cwd
+  cmd = "EXEC=#{o.sql}"
+  if o.sql_file?
+    cmd = o.sql_file # load a .sql file
+  p = spawn o.command, [ String(o.port), o.usr, o.pwd, verbose_arg, cmd ], cwd:o.cwd
   result = error = ''
   p.stdout.on 'data', (d) ->
     console.log 'out: ' + d if o.verbose
@@ -43,4 +47,9 @@ exports.Client = class Client
     o = {}
     o[k] = v for own k, v of @options
     o.sql = sql
+    exec o, cb
+  load: ( sql_file, cb ) ->
+    o = {}
+    o[k] = v for own k, v of @options
+    o.sql_file = sql_file
     exec o, cb
